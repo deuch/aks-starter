@@ -1,0 +1,42 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cluster-{{ .Values.application.name}}-{{ .Values.application.env}}-reader
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ .Values.clusterapprolereader.name }}
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: {{ .Values.application.aadappagroupID }}
+---
+{{- if eq .Values.application.env "dev" }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: app-{{ .Values.application.name}}-{{ .Values.application.env}}-writer
+  namespace: {{ .Values.application.name}}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ .Values.approlewriter.name }}
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: {{ .Values.application.aadappagroupID }}
+{{- else if eq .Values.application.env "prod" }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: cluster-{{ .Values.application.name}}-{{ .Values.application.env}}-reader
+  namespace: {{ .Values.application.name}}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ .Values.approlereader.name }}
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: {{ .Values.application.aadappagroupID }}
+{{- end }}

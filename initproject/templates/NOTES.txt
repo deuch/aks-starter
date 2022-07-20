@@ -1,0 +1,13 @@
+1. Project has been initialized with this setup :
+
+  - namespace Name : {{ .Values.application.name }}
+  - Environment Type : {{ .Values.application.env }}
+  - Azure AD Group ID : {{ .Values.application.aadappagroupID}}
+  - Roles Granted :
+    * ClusterRole : {{ .Values.clusterapprolereader.name }}
+    * Role : {{- if eq .Values.application.env "dev" }} {{ .Values.approlewriter.name }} {{- else if eq .Values.application.env "prod" }} {{ .Values.approlereader.name }} {{- end }}
+  - Quotas
+    * CPU Requests : {{ .Values.quota.cpu.requests }}
+    * CPU Limits : {{ .Values.quota.cpu.limits }}
+    * Memory Requests : {{ .Values.quota.memory.requests }}
+    * Memory Limits : {{ .Values.quota.memory.limits }}

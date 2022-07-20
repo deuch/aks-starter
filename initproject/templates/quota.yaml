@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: {{ .Values.quota.name }}
+  namespace: {{ .Values.application.name }}
+spec:
+  hard:
+    requests.cpu: {{ .Values.quota.cpu.requests }}
+    requests.memory: {{ .Values.quota.memory.requests }}
+    limits.cpu: {{ .Values.quota.cpu.limits }}
+    limits.memory: {{ .Values.quota.memory.limits }}

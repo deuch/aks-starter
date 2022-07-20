@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.application.name }}-azurefile
+  namespace: {{ .Values.application.name }}
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: {{ .Values.application.name }}-azurefile
+  resources:
+    requests:
+      storage: 100Gi

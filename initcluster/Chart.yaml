@@ -1,0 +1,11 @@
+apiVersion: v2
+appVersion: 1.0.0
+dependencies:
+- condition: ingress-nginx.enabled
+  name: ingress-nginx
+  repository: ""
+  version: 4.1.4
+description: Initialize a new AKS Cluster
+name: initcluster
+type: application
+version: 1.0.0

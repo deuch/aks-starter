@@ -1,0 +1,45 @@
+# Default values for initproject.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+application: 
+  name: 
+  env: # dev or prod
+  applicationID: 
+  costCenter: 
+  aadappagroupID: #AAD Group ID
+  businessLine:  
+
+namespace:
+  annotations: {
+    security: enabled
+  }
+  labels: {
+    restricted: "true"
+  }
+
+approlereader:
+  name: #RBAC Kubernetes reader role name for app (for rolebinding)
+
+approlewriter:
+  name: #RBAC Kubernetes writer role name for app (for rolebinding)
+
+clusterapprolereader:
+  name: #RBAC Kubernetes reader role name for app (for clusterrolebinding)
+
+quota:
+  name: "default-memory-cpu-quotas"
+  cpu:
+    requests: "1"
+    limits: "2"
+  memory: 
+    requests: 1Gi
+    limits: 2Gi
+
+storageclass:
+  sku: "Premium_LRS"
+  protocol: "smb"
+  networkEndpointType: "privateEndpoint"
+  location: # location of your storage account
+  storeAccountKey: "true"
+  secretName: # secret to be created in AKS
