@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Values.application.name }}-azurefile
+  name: {{ .Values.application.name }}-pvc
   namespace: {{ .Values.application.name }}
 spec:
   accessModes:

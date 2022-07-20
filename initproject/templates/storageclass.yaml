@@ -17,7 +17,6 @@ parameters:
   skuName: "{{ .Values.storageclass.sku }}"
   protocol: "{{ .Values.storageclass.protocol }}"
   networkEndpointType: "{{ .Values.storageclass.networkEndpointType }}"
-  location: "{{ .Values.storageclass.location }}"
   allowBlobPublicAccess: "false"
   storeAccountKey: "{{ .Values.storageclass.storeAccountKey }}"
   secretName: "{{ .Values.storageclass.secretName }}"

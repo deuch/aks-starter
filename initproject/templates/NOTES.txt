@@ -1,6 +1,6 @@
 1. Project has been initialized with this setup :
 
-  - namespace Name : {{ .Values.application.name }}
+  - Namespace Name : {{ .Values.application.name }}
   - Environment Type : {{ .Values.application.env }}
   - Azure AD Group ID : {{ .Values.application.aadappagroupID}}
   - Roles Granted :
@@ -11,3 +11,6 @@
     * CPU Limits : {{ .Values.quota.cpu.limits }}
     * Memory Requests : {{ .Values.quota.memory.requests }}
     * Memory Limits : {{ .Values.quota.memory.limits }}
+  - Storage Class and PVC
+    * Storage Class : {{ .Values.application.name }}-azurefile
+    * PVC : {{ .Values.application.name }}-pvc in namespace {{ .Values.application.name }}
