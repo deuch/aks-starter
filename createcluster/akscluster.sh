@@ -11,6 +11,7 @@ ilbsubnetprefix="10.20.1.0/24"
 micpname="aksmicp"
 mikubeletname="aksmikubelet"
 aksclustername="kubecls"
+apprgname="apprg"
 
 #create resource group for aks
 az group create --name $rgname --location $region
@@ -63,10 +64,14 @@ az aks get-credentials --resource-group $rgname --name $aksclustername
 
 # config cluster
 kubectl create ns ingress
-helm install -f initclustervalues.yaml initcluster initcluster --version 1.0.0 --namespace ingress
+helm install -f initclustervalues.yaml initclustertoto initcluster --version 1.0.0 --namespace ingress
+
+helm install -f initclustervalues.yaml initclustertoto oci://pfsandboxes.azurecr.io/helm/initcluster --version 1.0.0
 
 # config project
-helm install -f initprojectvalues.yaml initprojectapp1 initproject --version 1.0.0
+# create applicative resource group where storage account with file share will be created
+az group create --name $apprgname --location $region
+helm install -f initprojectvalues.yaml initprojectapp2 initproject --version 1.0.0
 
 
 # test pvc

@@ -22,3 +22,4 @@ parameters:
   secretName: "{{ .Values.storageclass.secretName }}"
   secretNamespace: "{{ .Values.application.name }}"
   shareName: "{{ .Values.application.name }}-share"
+  resourceGroup: "{{ .Values.storageclass.resourceGroup }}"

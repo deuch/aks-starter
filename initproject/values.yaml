@@ -43,3 +43,4 @@ storageclass:
   location: # location of your storage account
   storeAccountKey: "true"
   secretName: # secret to be created in AKS
+  resourceGroup: # applicative resourcegroup where the storage account will be created
