@@ -1,6 +1,6 @@
 # Logging
 
-Loggin in a multi-tenant AKS cluster
+Logging in a multi-tenant AKS cluster
 
 ### Pre-requisites
 

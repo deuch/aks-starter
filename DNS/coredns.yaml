@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom
+  namespace: kube-system
+data:
+  internal-custom.override: | # you may select any name here, but it must end with the .server file extension
+    rewrite stop {
+      name regex (.*)\.aks-internal\.com\.$ {1}.svc.cluster.local.
+      answer name (.*)\.svc\.cluster\.local\.$ {1}.aks-internal.com.
+    }
