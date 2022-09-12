@@ -12,7 +12,7 @@ domainName : domain to match. For eg : dev.mydomain.com
 
 ### How it works
 
-Eeach time a ingress is created in a applicative namespace, the policy check the host parameters in the ingress http rule definition.
+Eeach time an ingress is created in a applicative namespace, the policy check the host parameters in the ingress http rule definition.
 
 Let say you have a namespace called app1, granted http rule name must have this pattern : *.namespace.domainName
 
